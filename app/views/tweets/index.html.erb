@@ -1,4 +1,14 @@
-<%= render  partial: "tweet" , locals: {tweet: @tweet} %>
+
+<ul class="tweets">
+  <% @tweets.each do |tweet| %>
+
+  <%= render  partial: "tweets" , locals: {tweet: tweet} %>
+
+  <% end %>
+</ul>
+
+
+
 
 <%= form_for @tweet do |f| %>
   <%= f.text_area :message, placeholder: "What did you learn today?" %>

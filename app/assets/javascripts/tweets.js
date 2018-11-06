@@ -4,14 +4,35 @@ document.addEventListener("DOMContentLoaded", function() {
     var formData = new FormData(tweet_form);
 
 
-    form.addEventListener('submit',function(e){
+    tweet_form.addEventListener('submit',function(e){
 
         e.preventDefault();
-        var formData = new FormData(form);
-        var send_tweet = axios({
-            url: form.getAttribute('action') ,
-            method: form.getAttribute('method'),
+        var formData = new FormData(tweet_form);
+      axios({
+            url: tweet_form.getAttribute('action'),
+            method: tweet_form.getAttribute('method'),
             data: formData,
-        })
+            headers:{
+                //'Content-Type':'application/html',
+                'Accept': 'text/html'
+            }
+        }).then(function(response){
+          console.log(response.data);
+
+        var ulTweets = document.querySelector('.tweets');
+        // var liMyTweet = document.createElement('li');
+        // liMyTweet.classList = "tweet";
+        // var pMyTweet = document.createElement('p');
+        // var timeMyTweet = document.createElement('time');
+        // pMyTweet = response.data.tweet.message;
+        // timeMyTweet = response.data.tweet.created_at.strftime('%b %e, %l:%M %p');
+        // liMyTweet.appendChild(pMyTweet);
+        // liMyTweet.appendChild(timeMyTweet);
+        ulTweets.insertAdjacentHTML('afterbegin', response.data);
+        // });
+
+    });
+
+});
 
 });
