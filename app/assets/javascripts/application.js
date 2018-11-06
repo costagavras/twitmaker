@@ -11,3 +11,4 @@
 // about supported directives.
 //
 //= require_tree .
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
